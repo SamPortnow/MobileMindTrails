@@ -8,12 +8,28 @@
         <script src="jspsych-5.0/plugins/jspsych-button-response.js"></script>
         <script src="jspsych-5.0/plugins/jspsych-single-stim.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>        
         <script src="./static/jquery.csv.js"></script>
+        <script src="./static/papaparse.min.js"></script>        
         <link href="jspsych-5.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     </head>
     <body>
     </body>
     <script>
+
+	function parseData(url, callBack) {
+	    Papa.parse(url, {
+	        download: true,
+	        dynamicTyping: true,
+	        header: true,
+	        complete: function(results) {
+	            callBack(results.data);
+	        }
+	    });
+	}
+
+	parseData('./scenarios/scenarios.csv', doStuff)
+
 
     // function to hide a div
 	jQuery.fn.invisible = function() {
@@ -49,20 +65,17 @@
 	// the possible letters to choose from
     var possible = "abcdefghijklmnopqrstuvwxyz";
 
-    var scenarios = [
-    				 {sentence: 'You are on a walk. The sun is out. You feel', word: 'good', question:'Was the sun out?', answer:0},
-    				 {sentence: 'You are on a walk. It is raining. You feel', word: 'worse', question: 'Was it raining?', answer:0}
-    				 ];
+	function doStuff(scenarios) 
+	{
 
 	// empty timeline
     var timeline = [];
 
     n_trials = scenarios.length;
-
 	for (var i = 0; i < n_trials; i++)
     {    	
 				// split the sentences
-				split_sentences = scenarios[i].sentence.split('.')
+				split_sentences = scenarios[i].Scenario.split('.')
 				var stim = '';
 
 				// loop through the split-up sentences
@@ -73,7 +86,7 @@
 					{
 						stim = stim + split_sentences[k] + '.';
 					}
-					// if it's the last element it's the word; so don't added a period
+					// if it's the last element it's the word; so don't add a period
 					else
 					{
 						stim = stim + split_sentences[k];
@@ -100,9 +113,9 @@
 					timeline.push(trial);
 				}
 				// remove the letter; store the word and the letter
-				var removal = removeRandomLetter(scenarios[i].word);	
+				var removal = removeRandomLetter(scenarios[i].PositiveS);	
 				// here's the word
-				last = removal[0];
+				last = removal[0].toLowerCase();
 				var feedback = 'Correct!';
 				// put the letter and random letters as a choice
 				choice = [removal[1], possible.charAt(Math.floor(Math.random() * possible.length)), 
@@ -135,7 +148,7 @@
 					      	}));
 					      	setTimeout(function() {
 							    $('#feedback').invisible();
-							}, 1000);	
+							}, 500);	
 							trial.timeline[0].end = true;
 							trial.timeline[0].correct = false;							
 							trial.timeline[0].incorrect = false;
@@ -205,13 +218,16 @@
 				// same code for the question
 				var trial = {
 					type: 'button-response',
-					stimulus: "<p class='center-content'; style='font-size: 24px'>" + scenarios[i].question + "</p>",
+					stimulus: "<p class='center-content'; style='font-size: 24px'>" + scenarios[i].Questions + "</p>",
 					is_html: true,
 					timing_post_trial: 0,
 					correct: false,
 					incorrect:false,
 					end: false,					
-					answer: scenarios[i].answer, 
+					answer: function()
+					{
+						return 0;
+					}, 
 
 					do_it: function()
 					{
@@ -289,6 +305,7 @@
 	jsPsych.init({
 	  timeline: timeline
 	});
+	}
 
     </script>
 </html>
