@@ -3,15 +3,15 @@
     <head>
         <title>My experiment</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="jspsych-5.0/jspsych.js"></script>
-        <script src="jspsych-5.0/plugins/jspsych-text.js"></script>
-        <script src="jspsych-5.0/plugins/jspsych-button-response.js"></script>
-        <script src="jspsych-5.0/plugins/jspsych-single-stim.js"></script>
+        <script src="bower_components/jspsych/jspsych.js"></script>
+        <script src="bower_components/jspsych/plugins/jspsych-text.js"></script>
+        <script src="bower_components/jspsych/plugins/jspsych-button-response.js"></script>
+        <script src="bower_components/jspsych/plugins/jspsych-single-stim.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>        
-        <script src="./static/jquery.csv.js"></script>
-        <script src="./static/papaparse.min.js"></script>        
-        <link href="jspsych-5.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+        <script src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>        
+        <script src="bower_components/jquery-csv/src/jquery.csv.js"></script>
+        <script src="bower_components/papaparse/papaparse.min.js"></script>        
+        <link href="bower_components/jspsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     </head>
     <body>
     </body>
@@ -28,7 +28,7 @@
 	    });
 	}
 
-	parseData('./scenarios/scenarios.csv', doStuff)
+	parseData('/scenarios/scenarios.csv', doStuff)
 
 
     // function to hide a div
