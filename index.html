@@ -11,7 +11,12 @@
         <script src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>        
         <script src="bower_components/jquery-csv/src/jquery.csv.js"></script>
         <script src="bower_components/papaparse/papaparse.min.js"></script>        
+
         <link href="bower_components/jspsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+		<link href="style.css" rel="stylesheet" type="text/css"></link>
+
+
+
     </head>
     <body>
     </body>
@@ -94,7 +99,7 @@
 					// here's the trial
 					var trial = {
 						type: 'button-response',
-						stimulus: "<p class='center-content'; style='font-size: 24px'>" + stim + "</p>",
+						stimulus: "<p class='center-content'>" + stim + "</p>",
 						is_html: true,
 						timing_post_trial: 0,
 						// dynamic part of the trial, always add the div where the feedback is going to show
@@ -128,7 +133,7 @@
 				// here's the trial; we'll put this in a while loop
 				var trial = {
 					type: 'button-response',
-					stimulus: "<p id='stim'; class='center-content'; style='font-size: 24px'>" + stim + ' ' + last + ".</p>",
+					stimulus: "<p id='stim'; class='center-content'>" + stim + ' ' + last + ".</p>",
 					is_html: true,
 					index:index,
 					timing_post_trial: 0,
@@ -218,7 +223,7 @@
 				// same code for the question
 				var trial = {
 					type: 'button-response',
-					stimulus: "<p class='center-content'; style='font-size: 24px'>" + scenarios[i].Questions + "</p>",
+					stimulus: "<p class='center-content'>" + scenarios[i].Questions + "</p>",
 					is_html: true,
 					timing_post_trial: 0,
 					correct: false,
