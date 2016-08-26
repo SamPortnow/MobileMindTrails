@@ -1,0 +1,2 @@
+
+This provides a mobile version of MindTrails training sessions.  It was developed by Sam Portnow.  It uses bower to install Javascript dependencies.  So you will need to install bower, node, and npm.    When these applications are installed on your machine, you can use 'bower install' to install the dependencies.  From there, you will need to fire up a local web server in the current directory (I recommend using node's http-server, which you can easily install with npm install http-server, then just run http-server)  

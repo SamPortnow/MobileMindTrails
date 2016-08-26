@@ -1,0 +1,19 @@
+{
+    "name": "mobileMindtrails",
+    "version": "0.0.1",
+    "homepage": "https://github.com/danfunk/MobileMindTrails",
+    "authors": [
+	"Sam Portnow <sam.portnow@gmail.com>",
+	"Dan Funk <daniel.h.funk@gmail.com>"	
+    ],
+    "description": "MindTrails Mobile",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+	"jspsych": "https://github.com/jodeleeuw/jsPsych.git",
+	"papaparse":"v4.1.1",
+	"jquery-csv":"0.8.2"
+
+    }
+}
+
